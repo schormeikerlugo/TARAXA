@@ -466,6 +466,281 @@ const structuredData = {
         letter-spacing: 0.15em;
         text-transform: uppercase;
       }
+
+      /* ── Mobile: center all content ── */
+      @media (max-width: 768px) {
+        /* Section headings + leads */
+        .sec-index,
+        .sec-title,
+        .sec-subtitle,
+        .sec-lead,
+        .heading-lg,
+        .heading-md,
+        .body-lg,
+        .body-sm {
+          text-align: center;
+        }
+
+        /* Section identifier with lines on both sides */
+        .sec-index {
+          justify-content: center;
+        }
+        .sec-index::before,
+        .sec-index::after {
+          content: '';
+          display: block;
+          height: 1px;
+          width: 40px;
+          background: currentColor;
+          opacity: 0.4;
+          transition: width 1s var(--ease-out-expo);
+          margin-inline: 0;
+        }
+        .sec-index.visible::before,
+        .sec-index.visible::after {
+          width: 40px;
+        }
+
+        /* Hero */
+        .hero-body,
+        .hero-left,
+        .hero-stamp,
+        .hero-h1,
+        .h1-line,
+        .hero-rule-group,
+        .hero-descriptor,
+        .hero-cta,
+        .rail-inner {
+          text-align: center;
+          justify-content: center !important;
+          align-items: center !important;
+        }
+        .hero-left {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .hero-stamp,
+        .hero-cta,
+        .hero-rule-group {
+          justify-content: center !important;
+        }
+        .hero-cta {
+          flex-direction: column !important;
+          align-items: center !important;
+          gap: 1rem;
+        }
+        .hero-rule {
+          margin-inline: auto;
+        }
+
+        /* Studio */
+        .studio-header,
+        .studio-body,
+        .etym-card,
+        .studio-stats-inner {
+          text-align: center;
+        }
+        .studio-stats-inner {
+          justify-content: center !important;
+          flex-wrap: wrap;
+        }
+
+        /* Capabilities */
+        .cap-header-inner,
+        .cap-zig-content,
+        .cap-zig-meta,
+        .cap-cta-inner,
+        .cap-cta-text,
+        .cap-specs {
+          text-align: center;
+          justify-content: center !important;
+          align-items: center !important;
+        }
+        .cap-specs li {
+          padding-left: 0;
+        }
+        .cap-specs li::before {
+          position: static;
+          margin-right: 0.4rem;
+        }
+
+        /* Process */
+        .process-header,
+        .proc-row,
+        .proc-row-body,
+        .proc-row-meta {
+          text-align: center;
+          justify-items: center;
+        }
+
+        /* Materials */
+        .mat-header,
+        .mat-header-content,
+        .mat-title,
+        .mat-lead,
+        .mat-panel-info,
+        .mat-panel-header,
+        .mat-desc,
+        .mat-tags,
+        .mat-specs-grid,
+        .mat-spec,
+        .mat-panel-cols,
+        .mat-col,
+        .mat-list,
+        .mat-hardness-bar,
+        .mat-bar-labels {
+          text-align: center;
+        }
+        .mat-panel-header {
+          flex-direction: column !important;
+          align-items: center !important;
+          gap: 0.5rem;
+        }
+        .mat-panel-id {
+          margin-inline: auto;
+        }
+        .mat-tags,
+        .mat-specs-grid {
+          justify-content: center !important;
+          align-items: center !important;
+        }
+        .mat-list {
+          list-style: none;
+          padding-left: 0;
+        }
+        .mat-list li {
+          text-align: center;
+          justify-content: center !important;
+          align-items: center !important;
+          display: flex !important;
+          gap: 0.5rem;
+        }
+        .mat-col-head {
+          text-align: center;
+        }
+        .mat-cta {
+          margin-inline: auto;
+          display: inline-flex !important;
+          align-self: center;
+        }
+        .mat-col {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        /* Industries */
+        .ind-header,
+        .ind-card,
+        .ind-card-body,
+        .ind-card-highlight,
+        .geo-header,
+        .geo-title,
+        .geo-markets {
+          text-align: center;
+        }
+        .geo-header {
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+        .ind-card-icon,
+        .ind-card-highlight {
+          margin-inline: auto;
+          justify-content: center !important;
+        }
+        .geo-market {
+          justify-content: center !important;
+        }
+
+        /* Contact + Why TARAXA */
+        .why-content-head,
+        .why-content-lead,
+        .why-row,
+        .why-row-body,
+        .contact-header,
+        .contact-context,
+        .contact-title,
+        .contact-lead,
+        .contact-info,
+        .contact-badges,
+        .contact-form,
+        .form-row,
+        .form-group {
+          text-align: center;
+        }
+        .why-row {
+          justify-items: center;
+        }
+        .contact-context {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .contact-info {
+          align-items: center !important;
+        }
+        .contact-info-item {
+          justify-content: center !important;
+          align-items: center !important;
+        }
+        .contact-badges {
+          justify-content: center !important;
+          align-items: center !important;
+          flex-wrap: wrap;
+        }
+        .contact-badge {
+          justify-content: center !important;
+        }
+
+        /* Footer */
+        .site-footer {
+          width: 100%;
+          text-align: center;
+        }
+        .footer-inner,
+        .footer-brand,
+        .footer-links,
+        .footer-col,
+        .footer-bottom,
+        .footer-tagline,
+        .footer-logo {
+          text-align: center;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+        .footer-brand,
+        .footer-col {
+          justify-self: center !important;
+        }
+        .footer-links {
+          grid-template-columns: auto auto !important;
+          justify-content: center !important;
+          gap: 3rem !important;
+          width: 100%;
+        }
+        .footer-links .footer-col:last-child:nth-child(3) {
+          grid-column: 1 / -1;
+        }
+        .footer-links {
+          justify-items: center;
+        }
+        .footer-col a,
+        .footer-col p {
+          text-align: center;
+        }
+        .footer-bottom {
+          flex-direction: column !important;
+          align-items: center !important;
+          gap: 0.75rem;
+        }
+        .footer-logo {
+          margin-inline: auto;
+        }
+
+        /* Navigation — keep as is */
+      }
     </style>
   </head>
   <body>
@@ -511,7 +786,7 @@ const structuredData = {
       document.querySelectorAll("[data-stagger]").forEach((parent) => {
         const children = parent.querySelectorAll(".reveal, .reveal-fade");
         children.forEach((child, i) => {
-          child.style.transitionDelay = `${i * 0.08}s`;
+          (child as HTMLElement).style.transitionDelay = `${i * 0.08}s`;
         });
       });
     </script>
