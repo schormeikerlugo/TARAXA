@@ -1,0 +1,324 @@
+---
+// Navigation component
+---
+
+<header id="site-nav" class="site-nav">
+  <div class="nav-inner">
+    <!-- Logo / Wordmark -->
+    <a href="/" class="nav-logo" aria-label="TARAXA home">
+      <span class="nav-logo-mark">
+        <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="6" fill="currentColor"/>
+          <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <line x1="32" y1="26" x2="32" y2="13"/><ellipse cx="32" cy="11" rx="3" ry="4.5" fill="currentColor" stroke="none"/>
+            <line x1="36" y1="28" x2="45" y2="18"/><ellipse cx="46.5" cy="16.5" rx="3" ry="4.5" transform="rotate(40 46.5 16.5)" fill="currentColor" stroke="none"/>
+            <line x1="38" y1="32" x2="51" y2="32"/><ellipse cx="53" cy="32" rx="3" ry="4.5" transform="rotate(90 53 32)" fill="currentColor" stroke="none"/>
+            <line x1="36" y1="36" x2="45" y2="46"/><ellipse cx="46.5" cy="47.5" rx="3" ry="4.5" transform="rotate(140 46.5 47.5)" fill="currentColor" stroke="none"/>
+            <line x1="32" y1="38" x2="32" y2="51"/><ellipse cx="32" cy="53" rx="3" ry="4.5" transform="rotate(180 32 53)" fill="currentColor" stroke="none"/>
+            <line x1="28" y1="36" x2="19" y2="46"/><ellipse cx="17.5" cy="47.5" rx="3" ry="4.5" transform="rotate(-140 17.5 47.5)" fill="currentColor" stroke="none"/>
+            <line x1="26" y1="32" x2="13" y2="32"/><ellipse cx="11" cy="32" rx="3" ry="4.5" transform="rotate(-90 11 32)" fill="currentColor" stroke="none"/>
+            <line x1="28" y1="28" x2="19" y2="18"/><ellipse cx="17.5" cy="16.5" rx="3" ry="4.5" transform="rotate(-40 17.5 16.5)" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </span>
+      <span class="nav-logo-text">TARAXA</span>
+    </a>
+
+    <!-- Desktop Nav Links (left, next to logo) -->
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#studio" class="nav-link">Studio</a>
+      <a href="#capabilities" class="nav-link">Capabilities</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#materials" class="nav-link">Materials</a>
+      <a href="#industries" class="nav-link">Industries</a>
+    </nav>
+
+    <!-- Right group: pushed to far right -->
+    <div class="nav-right">
+      <span class="nav-origin mono">Made in Poland</span>
+      <a href="#contact" class="btn btn-primary btn-sm">Get a Quote</a>
+      <div class="nav-coord">
+        <span class="mono">52°N · 21°E</span>
+        <span class="mono nav-coord-sub">Warsaw · Poland</span>
+      </div>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <nav class="nav-mobile-links">
+      <a href="#studio"       class="nav-mobile-link">Studio</a>
+      <a href="#capabilities" class="nav-mobile-link">Capabilities</a>
+      <a href="#process"      class="nav-mobile-link">Process</a>
+      <a href="#materials"    class="nav-mobile-link">Materials</a>
+      <a href="#industries"   class="nav-mobile-link">Industries</a>
+      <a href="#contact"      class="nav-mobile-link nav-mobile-cta">Get a Quote</a>
+    </nav>
+    <div class="nav-mobile-foot">
+      <span class="mono">Made in Poland · Shipped Worldwide</span>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+    padding-top: 1.5rem;
+  }
+
+  .site-nav.scrolled {
+    background: rgba(26, 26, 24, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 1px 0 rgba(245,240,232,0.06);
+    padding-top: 0;
+  }
+
+  .nav-inner {
+    padding-inline: var(--gutter);
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    height: 64px;
+  }
+
+  /* Logo */
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--bone);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-mark {
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    transition: transform 0.4s var(--ease-spring);
+  }
+
+  .nav-logo:hover .nav-logo-mark {
+    transform: rotate(45deg);
+  }
+
+  .nav-logo-text {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bone);
+  }
+
+  /* Links — inline with logo on the left */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* Right group — pushed to far right */
+  .nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    padding: 0.5rem 0.875rem;
+    border-radius: 6px;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--bone);
+    background: rgba(245,240,232,0.08);
+  }
+
+  /* CTA group */
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .nav-origin {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.4);
+    text-transform: uppercase;
+  }
+
+  .btn-sm {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.75rem;
+  }
+
+  /* Coordinates */
+  .nav-coord {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.05rem;
+    border-left: 1px solid rgba(245,240,232,0.1);
+    padding-left: 1.25rem;
+  }
+
+  .nav-coord .mono {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-coord-sub {
+    color: rgba(201,168,76,0.45) !important;
+    font-size: 0.55rem !important;
+  }
+
+  /* Toggle */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    margin-left: auto;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: var(--bone);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    transform-origin: left center;
+  }
+
+  .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(1px, -1px); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(1px, 1px); }
+
+  /* Mobile menu */
+  .nav-mobile {
+    display: none;
+    background: var(--ink);
+    border-top: 1px solid rgba(245,240,232,0.08);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.45s var(--ease-out-expo);
+  }
+
+  .nav-mobile.open {
+    max-height: 600px;
+  }
+
+  .nav-mobile-links {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem var(--gutter) 1rem;
+    gap: 0.25rem;
+  }
+
+  .nav-mobile-link {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(245,240,232,0.75);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+    letter-spacing: 0.04em;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+  }
+
+  .nav-mobile-link:hover {
+    color: var(--bone);
+    padding-left: 0.5rem;
+  }
+
+  .nav-mobile-cta {
+    color: var(--rust) !important;
+    font-weight: 600;
+    border-bottom: none;
+    margin-top: 0.5rem;
+  }
+
+  .nav-mobile-foot {
+    padding: 1rem var(--gutter) 1.5rem;
+    color: rgba(245,240,232,0.3);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 900px) {
+    .nav-links, .nav-origin, .nav-coord { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-mobile { display: block; }
+    .nav-right .btn, .nav-right .nav-coord { display: none; }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('site-nav');
+  const toggle = document.querySelector('.nav-toggle');
+  const mobileMenu = document.getElementById('nav-mobile');
+  const mobileLinks = document.querySelectorAll('.nav-mobile-link');
+
+  // Scroll handler
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav?.classList.add('scrolled');
+    } else {
+      nav?.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // Initialize scrolled state
+  if (window.scrollY > 60) nav?.classList.add('scrolled');
+
+  // Mobile toggle
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu?.classList.toggle('open', isOpen);
+    mobileMenu?.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  // Close mobile menu on link click
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      toggle?.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.classList.remove('open');
+      mobileMenu?.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>

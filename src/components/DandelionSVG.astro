@@ -1,0 +1,310 @@
+---
+export interface Props {
+  size?: number;
+  color?: string;
+  animated?: boolean;
+  class?: string;
+}
+
+const {
+  size = 400,
+  color = '#C9A84C',
+  animated = true,
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`dandelion-container ${animated ? 'dandelion-animated' : ''} ${className}`} aria-hidden="true">
+  <svg
+    class="dandelion-svg"
+    viewBox="0 0 400 400"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    role="img"
+    aria-label="Dandelion botanical motif — symbol of TARAXA brand"
+  >
+    <defs>
+      <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color={color} stop-opacity="0.9"/>
+        <stop offset="100%" stop-color={color} stop-opacity="0.2"/>
+      </radialGradient>
+      <filter id="seedBlur">
+        <feGaussianBlur stdDeviation="0.5"/>
+      </filter>
+      <filter id="glowFilter">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!-- Stem -->
+    <path
+      class="dandelion-stem"
+      d="M200 245 Q196 300 188 360"
+      stroke={color}
+      stroke-width="2"
+      stroke-linecap="round"
+      opacity="0.5"
+    />
+
+    <!-- Center sphere -->
+    <circle class="dandelion-center" cx="200" cy="200" r="18" fill="url(#centerGlow)" filter="url(#glowFilter)"/>
+    <circle cx="200" cy="200" r="10" fill={color} opacity="0.9"/>
+
+    <!-- Seeds — 24 rays at 15° intervals -->
+    <!-- Each seed: stem + teardrop head -->
+
+    <!-- Seed 1: 0° (top) -->
+    <g class="seed seed-1" transform-origin="200 200">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+      <line x1="197" y1="122" x2="195" y2="115" stroke={color} stroke-width="0.8" opacity="0.5"/>
+      <line x1="203" y1="122" x2="205" y2="115" stroke={color} stroke-width="0.8" opacity="0.5"/>
+    </g>
+
+    <!-- Seed 2: 15° -->
+    <g class="seed seed-2" transform-origin="200 200" transform="rotate(15, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 3: 30° -->
+    <g class="seed seed-3" transform-origin="200 200" transform="rotate(30, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="118" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="110" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 4: 45° -->
+    <g class="seed seed-4" transform-origin="200 200" transform="rotate(45, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="122" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="114" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 5: 60° -->
+    <g class="seed seed-5" transform-origin="200 200" transform="rotate(60, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 6: 75° -->
+    <g class="seed seed-6" transform-origin="200 200" transform="rotate(75, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="118" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="110" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 7: 90° -->
+    <g class="seed seed-7" transform-origin="200 200" transform="rotate(90, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 8: 105° -->
+    <g class="seed seed-8" transform-origin="200 200" transform="rotate(105, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="122" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="114" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 9: 120° -->
+    <g class="seed seed-9" transform-origin="200 200" transform="rotate(120, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 10: 135° -->
+    <g class="seed seed-10" transform-origin="200 200" transform="rotate(135, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="118" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="110" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 11: 150° -->
+    <g class="seed seed-11" transform-origin="200 200" transform="rotate(150, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 12: 165° -->
+    <g class="seed seed-12" transform-origin="200 200" transform="rotate(165, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="122" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="114" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 13: 180° -->
+    <g class="seed seed-13" transform-origin="200 200" transform="rotate(180, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 14: 195° -->
+    <g class="seed seed-14" transform-origin="200 200" transform="rotate(195, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="118" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="110" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 15: 210° -->
+    <g class="seed seed-15" transform-origin="200 200" transform="rotate(210, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 16: 225° -->
+    <g class="seed seed-16" transform-origin="200 200" transform="rotate(225, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="122" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="114" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 17: 240° -->
+    <g class="seed seed-17" transform-origin="200 200" transform="rotate(240, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 18: 255° -->
+    <g class="seed seed-18" transform-origin="200 200" transform="rotate(255, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="118" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="110" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 19: 270° -->
+    <g class="seed seed-19" transform-origin="200 200" transform="rotate(270, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 20: 285° -->
+    <g class="seed seed-20" transform-origin="200 200" transform="rotate(285, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="122" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="114" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 21: 300° -->
+    <g class="seed seed-21" transform-origin="200 200" transform="rotate(300, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 22: 315° -->
+    <g class="seed seed-22" transform-origin="200 200" transform="rotate(315, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="118" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="110" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 23: 330° -->
+    <g class="seed seed-23" transform-origin="200 200" transform="rotate(330, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="120" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="112" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Seed 24: 345° -->
+    <g class="seed seed-24" transform-origin="200 200" transform="rotate(345, 200, 200)">
+      <line x1="200" y1="182" x2="200" y2="122" stroke={color} stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <ellipse cx="200" cy="114" rx="5" ry="8" fill={color} opacity="0.85"/>
+    </g>
+
+    <!-- Floating dispersed seeds -->
+    <g class="floating-seeds" opacity="0.6">
+      <g class="float-seed fs-1">
+        <circle cx="310" cy="120" r="3.5" fill={color} opacity="0.7"/>
+        <line x1="310" y1="124" x2="308" y2="134" stroke={color} stroke-width="0.8" opacity="0.5"/>
+      </g>
+      <g class="float-seed fs-2">
+        <circle cx="90" cy="150" r="3" fill={color} opacity="0.6"/>
+        <line x1="90" y1="153" x2="88" y2="162" stroke={color} stroke-width="0.8" opacity="0.5"/>
+      </g>
+      <g class="float-seed fs-3">
+        <circle cx="340" cy="220" r="2.5" fill={color} opacity="0.5"/>
+        <line x1="340" y1="223" x2="339" y2="231" stroke={color} stroke-width="0.7" opacity="0.4"/>
+      </g>
+      <g class="float-seed fs-4">
+        <circle cx="65" cy="240" r="3" fill={color} opacity="0.55"/>
+        <line x1="65" y1="243" x2="63" y2="252" stroke={color} stroke-width="0.7" opacity="0.4"/>
+      </g>
+      <g class="float-seed fs-5">
+        <circle cx="290" cy="300" r="2" fill={color} opacity="0.45"/>
+        <line x1="290" y1="302" x2="289" y2="309" stroke={color} stroke-width="0.6" opacity="0.35"/>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .dandelion-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .dandelion-svg {
+    overflow: visible;
+  }
+
+  /* Slow rotation of entire dandelion */
+  .dandelion-animated .dandelion-svg {
+    animation: dandelion-rotate 60s linear infinite;
+  }
+
+  @keyframes dandelion-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Seed gentle sway */
+  .dandelion-animated .seed {
+    transform-box: fill-box;
+    animation: seed-sway 4s ease-in-out infinite;
+  }
+
+  .dandelion-animated .seed:nth-child(odd) {
+    animation-direction: alternate-reverse;
+  }
+
+  @keyframes seed-sway {
+    0%, 100% { transform: rotate(var(--base-rot, 0deg)) scale(1); }
+    50% { transform: rotate(calc(var(--base-rot, 0deg) + 1.5deg)) scale(1.02); }
+  }
+
+  /* Stagger seed animations */
+  .dandelion-animated .seed-1  { animation-delay: 0s;    animation-duration: 3.8s; }
+  .dandelion-animated .seed-2  { animation-delay: 0.15s; animation-duration: 4.2s; }
+  .dandelion-animated .seed-3  { animation-delay: 0.3s;  animation-duration: 3.6s; }
+  .dandelion-animated .seed-4  { animation-delay: 0.45s; animation-duration: 4.5s; }
+  .dandelion-animated .seed-5  { animation-delay: 0.6s;  animation-duration: 3.9s; }
+  .dandelion-animated .seed-6  { animation-delay: 0.75s; animation-duration: 4.1s; }
+  .dandelion-animated .seed-7  { animation-delay: 0.9s;  animation-duration: 4.4s; }
+  .dandelion-animated .seed-8  { animation-delay: 1.05s; animation-duration: 3.7s; }
+  .dandelion-animated .seed-9  { animation-delay: 1.2s;  animation-duration: 4.0s; }
+  .dandelion-animated .seed-10 { animation-delay: 1.35s; animation-duration: 4.3s; }
+  .dandelion-animated .seed-11 { animation-delay: 1.5s;  animation-duration: 3.5s; }
+  .dandelion-animated .seed-12 { animation-delay: 1.65s; animation-duration: 4.6s; }
+
+  /* Center pulse */
+  .dandelion-animated .dandelion-center {
+    animation: center-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes center-pulse {
+    0%, 100% { r: 18; opacity: 0.8; }
+    50% { r: 22; opacity: 1; }
+  }
+
+  /* Floating seeds drift */
+  .dandelion-animated .float-seed {
+    animation: float-drift 8s ease-in-out infinite;
+  }
+
+  .dandelion-animated .fs-1 { animation-delay: 0s;    animation-duration: 7s; }
+  .dandelion-animated .fs-2 { animation-delay: 1.2s;  animation-duration: 9s; }
+  .dandelion-animated .fs-3 { animation-delay: 2.4s;  animation-duration: 6.5s; }
+  .dandelion-animated .fs-4 { animation-delay: 3.6s;  animation-duration: 8.5s; }
+  .dandelion-animated .fs-5 { animation-delay: 4.8s;  animation-duration: 7.5s; }
+
+  @keyframes float-drift {
+    0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.6; }
+    25%  { transform: translate(8px, -12px) rotate(5deg); opacity: 0.8; }
+    50%  { transform: translate(15px, -6px) rotate(-3deg); opacity: 0.5; }
+    75%  { transform: translate(5px, -18px) rotate(8deg); opacity: 0.7; }
+    100% { transform: translate(0, 0) rotate(0deg); opacity: 0.6; }
+  }
+</style>

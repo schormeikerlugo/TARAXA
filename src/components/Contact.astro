@@ -1,0 +1,882 @@
+---
+const differentiators = [
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.5 19H9a7 7 0 110-14h8.5a4.5 4.5 0 010 9H9a2 2 0 010-4h8"/></svg>`,
+    title: 'EU-Certified Supply Chain',
+    text: 'Full traceability, EU-origin documentation, and rapid customs clearance for buyers in Germany, France, the Netherlands, and the wider EU.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`,
+    title: 'Short Lead Times',
+    text: 'Prototype tooling and first samples in 7–14 days. Production delivery in 3–6 weeks. No ocean freight delays.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    title: 'ISO 9001 Quality',
+    text: 'Full QMS with material test certificates, dimensional inspection reports, and CoC documentation on every delivery.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    title: 'Direct Engineering Access',
+    text: 'You work directly with our rubber engineers — not a sales layer. Faster decisions, better technical outcomes.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    title: 'REACH & RoHS Compliant',
+    text: 'All compounds formulated to meet current EU substance restriction regulations with full compliance documentation.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    title: 'Made in Poland',
+    text: 'Stable EU manufacturing base with competitive pricing — not dependent on global logistics chains that create delays and quality risk.',
+  },
+];
+---
+
+<section id="contact" class="contact">
+
+  <!-- Why TARAXA band -->
+  <div class="why-band">
+    <!-- Video column -->
+    <div class="why-image-col">
+      <video
+        class="why-image"
+        autoplay muted loop playsinline
+      >
+        <source src="/videos/AdobeStock_1769824392.mp4" type="video/mp4" />
+      </video>
+      <!-- Floating badge -->
+      <div class="why-badge">
+        <span class="why-badge-num">35<sup>+</sup></span>
+        <span class="why-badge-label mono">Years of<br/>production</span>
+      </div>
+    </div>
+
+    <!-- Right: heading + list -->
+    <div class="why-content">
+      <div class="why-content-head">
+        <p class="sec-index reveal">06 — Why TARAXA</p>
+        <h2 class="sec-title why-title reveal reveal-delay-1">
+          The case for<br/>
+          <em>choosing us</em>
+        </h2>
+      </div>
+
+      <ul class="why-list">
+        {differentiators.map((d, i) => (
+          <li class={`why-row reveal reveal-delay-${Math.min(i + 1, 5)}`}>
+            <span class="why-row-num mono">{String(i + 1).padStart(2, '0')}</span>
+            <div class="why-row-body">
+              <h3 class="why-row-title">{d.title}</h3>
+              <p class="why-row-text">{d.text}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Contact form section -->
+  <div class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left: context -->
+        <div class="contact-context">
+          <div class="reveal">
+            <span class="label label-rust">
+              <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
+              Get in Touch
+            </span>
+          </div>
+          <h2 class="display-md contact-title reveal reveal-delay-1">
+            Let's engineer<br/>
+            <em>something together.</em>
+          </h2>
+          <p class="body-lg contact-lead reveal reveal-delay-2">
+            Tell us about your rubber component challenge.
+            We'll review your requirements and come back with a
+            technical recommendation within 24 hours.
+          </p>
+
+          <div class="contact-info reveal reveal-delay-3">
+            <div class="contact-info-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:enquiries@taraxa.eu">enquiries@taraxa.eu</a>
+            </div>
+            <div class="contact-info-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Poland, European Union</span>
+            </div>
+            <div class="contact-info-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span>Response within 24 hours</span>
+            </div>
+          </div>
+
+          <!-- Trust badges -->
+          <div class="contact-badges reveal reveal-delay-4">
+            <div class="contact-badge">
+              <span class="contact-badge-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <span class="mono">ISO 9001</span>
+            </div>
+            <div class="contact-badge">
+              <span class="contact-badge-icon">🇪🇺</span>
+              <span class="mono">EU Origin</span>
+            </div>
+            <div class="contact-badge">
+              <span class="contact-badge-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <span class="mono">REACH Compliant</span>
+            </div>
+            <div class="contact-badge">
+              <span class="contact-badge-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </span>
+              <span class="mono">Est. 1988</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="contact-form-wrap reveal reveal-delay-2">
+          <form class="contact-form" novalidate id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="firstName">First name <span aria-hidden="true">*</span></label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Hans"
+                  required
+                  autocomplete="given-name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lastName">Last name <span aria-hidden="true">*</span></label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Müller"
+                  required
+                  autocomplete="family-name"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="email">Work email <span aria-hidden="true">*</span></label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="hans@company.de"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="company">Company</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder="Müller GmbH"
+                  autocomplete="organization"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="interest">Area of interest</label>
+              <select class="form-input form-select" id="interest" name="interest">
+                <option value="">Select a service…</option>
+                <option value="compression">Compression &amp; Injection Moulding</option>
+                <option value="bonding">Rubber-to-Metal Bonding</option>
+                <option value="compound">Compound Formulation</option>
+                <option value="tooling">Tooling &amp; Mould Design</option>
+                <option value="consultation">Engineering Consultation</option>
+                <option value="samples">Material Samples</option>
+                <option value="other">Other / General Enquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="volume">Approximate annual volume</label>
+              <select class="form-input form-select" id="volume" name="volume">
+                <option value="">Select volume range…</option>
+                <option value="prototype">Prototype / Development only</option>
+                <option value="small">Under 5,000 units/year</option>
+                <option value="medium">5,000–50,000 units/year</option>
+                <option value="large">50,000–500,000 units/year</option>
+                <option value="xlarge">500,000+ units/year</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Project description <span aria-hidden="true">*</span></label>
+              <textarea
+                class="form-input form-textarea"
+                id="message"
+                name="message"
+                placeholder="Describe your rubber component requirements — material conditions, operating environment, dimensions, applicable standards, or any other relevant details…"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group form-check">
+              <label class="form-check-label">
+                <input type="checkbox" name="nda" value="yes" class="form-check-input"/>
+                <span>This enquiry is confidential — I would like to sign an NDA before sharing full details</span>
+              </label>
+            </div>
+
+            <div class="form-group form-check">
+              <label class="form-check-label">
+                <input type="checkbox" name="gdpr" required class="form-check-input"/>
+                <span>I agree that TARAXA / GUMEX may store and process my data to respond to this enquiry. <a href="#" style="color: var(--rust);">Privacy Policy</a></span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit">
+              Send Enquiry
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            </button>
+
+            <p class="form-footnote mono">
+              We respond within 24 hours on business days. Your data is processed under GDPR.
+            </p>
+          </form>
+
+          <!-- Success message (hidden) -->
+          <div class="form-success" id="form-success" aria-live="polite" hidden>
+            <div class="form-success-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3>Enquiry received</h3>
+            <p class="body-sm">Thank you — a TARAXA engineer will review your requirements and get back to you within 24 hours.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="6" fill="var(--gold)"/>
+              <g stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round">
+                <line x1="32" y1="26" x2="32" y2="14"/><ellipse cx="32" cy="12" rx="3" ry="4.5" fill="var(--gold)" stroke="none"/>
+                <line x1="36" y1="28" x2="45" y2="18"/><ellipse cx="46.5" cy="16.5" rx="3" ry="4.5" transform="rotate(40 46.5 16.5)" fill="var(--gold)" stroke="none"/>
+                <line x1="38" y1="32" x2="51" y2="32"/><ellipse cx="53" cy="32" rx="3" ry="4.5" transform="rotate(90 53 32)" fill="var(--gold)" stroke="none"/>
+                <line x1="32" y1="38" x2="32" y2="50"/><ellipse cx="32" cy="52" rx="3" ry="4.5" transform="rotate(180 32 52)" fill="var(--gold)" stroke="none"/>
+                <line x1="28" y1="36" x2="19" y2="46"/><ellipse cx="17.5" cy="47.5" rx="3" ry="4.5" transform="rotate(-140 17.5 47.5)" fill="var(--gold)" stroke="none"/>
+                <line x1="26" y1="32" x2="13" y2="32"/><ellipse cx="11" cy="32" rx="3" ry="4.5" transform="rotate(-90 11 32)" fill="var(--gold)" stroke="none"/>
+                <line x1="28" y1="28" x2="19" y2="18"/><ellipse cx="17.5" cy="16.5" rx="3" ry="4.5" transform="rotate(-40 17.5 16.5)" fill="var(--gold)" stroke="none"/>
+                <line x1="36" y1="36" x2="45" y2="46"/><ellipse cx="46.5" cy="47.5" rx="3" ry="4.5" transform="rotate(140 46.5 47.5)" fill="var(--gold)" stroke="none"/>
+              </g>
+            </svg>
+            <span class="footer-wordmark">TARAXA</span>
+          </div>
+          <p class="footer-tagline mono">Custom Rubber Engineering<br/>Made in Poland · Shipped Worldwide</p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <p class="footer-col-head mono">Services</p>
+            <a href="#capabilities">Compression Moulding</a>
+            <a href="#capabilities">Rubber-Metal Bonding</a>
+            <a href="#capabilities">Compound Formulation</a>
+            <a href="#capabilities">Tooling & Design</a>
+          </div>
+          <div class="footer-col">
+            <p class="footer-col-head mono">Company</p>
+            <a href="#studio">About TARAXA</a>
+            <a href="#process">Our Process</a>
+            <a href="#materials">Materials</a>
+            <a href="#industries">Industries</a>
+          </div>
+          <div class="footer-col">
+            <p class="footer-col-head mono">Contact</p>
+            <a href="mailto:enquiries@taraxa.eu">enquiries@taraxa.eu</a>
+            <a href="#contact">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="mono">© 2024 TARAXA · A GUMEX brand · All rights reserved</p>
+        <p class="mono">
+          <a href="#">Privacy Policy</a>
+          <span>·</span>
+          <a href="#">Terms of Use</a>
+          <span>·</span>
+          <a href="#">Cookie Policy</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</section>
+
+<style>
+  /* ── Why TARAXA ── */
+  .why-band {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 60vh;
+    background: var(--bone);
+    overflow: hidden;
+  }
+
+  /* ── Image column ── */
+  .why-image-col {
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .why-image {
+    width: 92%;
+    height: 92%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.8s var(--ease-out-expo);
+  }
+
+  .why-image-col:hover .why-image {
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+
+  /* Floating stat badge */
+  .why-badge {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    background: rgba(28, 28, 26, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(245, 240, 232, 0.1);
+    border-radius: var(--radius-lg, 0.75rem);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(245, 240, 232, 0.06);
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+  }
+
+  .why-badge-num {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .why-badge-num sup {
+    font-size: 0.5em;
+    color: var(--rust);
+  }
+
+  .why-badge-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    line-height: 1.6;
+  }
+
+  /* ── Right content ── */
+  .why-content {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(3rem, 6vw, 6rem) clamp(2rem, 5vw, 5rem);
+    border-left: 1px solid var(--ink-10);
+  }
+
+  .why-content-head {
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--ink-10);
+    margin-bottom: 0;
+  }
+
+  .why-title { color: var(--ink); }
+  .why-title em { color: var(--rust); font-style: italic; }
+
+  /* ── List ── */
+  .why-list {
+    list-style: none;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .why-row {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    padding: 1.25rem 1.25rem;
+    border-bottom: 1px solid var(--ink-10);
+    position: relative;
+    cursor: default;
+    transition: background 0.3s ease;
+  }
+
+  .why-row:nth-child(odd) {
+    border-right: 1px solid var(--ink-10);
+  }
+
+  .why-row::before {
+    content: '';
+    position: absolute;
+    left: -clamp(2rem, 5vw, 5rem);
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--rust);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+
+  .why-row:hover::before { transform: scaleY(1); }
+  .why-row:hover { background: rgba(200,75,47,0.03); }
+
+  .why-row-num {
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    color: var(--rust);
+    padding-top: 0.2rem;
+    flex-shrink: 0;
+  }
+
+  .why-row-title {
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.35rem;
+    transition: color 0.3s ease;
+  }
+
+  .why-row:hover .why-row-title { color: var(--rust); }
+
+  .why-row-text {
+    font-size: 0.78rem;
+    color: var(--ink-60);
+    line-height: 1.7;
+  }
+
+  /* placeholder for old icon style (unused now) */
+  .why-item-icon {
+    display: none;
+    color: var(--rust);
+    flex-shrink: 0;
+  }
+
+  .why-item-text strong {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+  }
+
+  .why-item-text .body-sm {
+    color: var(--ink-60);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .why-band { grid-template-columns: 1fr; }
+    .why-image-col { height: 50vw; min-height: 320px; }
+    .why-content { border-left: none; border-top: 1px solid var(--ink-10); }
+    .why-list { grid-template-columns: 1fr; }
+    .why-row:nth-child(odd) { border-right: none; }
+    .why-row::before { left: -clamp(2rem, 5vw, 5rem); }
+  }
+
+  /* ── Contact section ── */
+  .contact-section {
+    background: var(--ink);
+    padding-block: clamp(5rem, 10vw, 9rem);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .contact-title {
+    font-family: var(--font-display);
+    color: var(--bone);
+    font-weight: 300;
+    margin-block: 1.5rem;
+  }
+
+  .contact-title em { color: var(--gold); font-style: italic; }
+
+  .contact-lead {
+    color: rgba(245,240,232,0.55);
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.6);
+  }
+
+  .contact-info-item svg { color: var(--gold); flex-shrink: 0; }
+  .contact-info-item a:hover { color: var(--gold); }
+
+  .contact-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .contact-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid rgba(245,240,232,0.1);
+    border-radius: 100px;
+    background: rgba(245,240,232,0.04);
+  }
+
+  .contact-badge-icon {
+    display: flex;
+    align-items: center;
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+
+  .contact-badge .mono {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.5);
+    text-transform: uppercase;
+  }
+
+  /* ── Form ── */
+  .contact-form-wrap {
+    background: var(--light);
+    border-radius: var(--radius-xl);
+    padding: clamp(2rem, 4vw, 3rem);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-label {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+
+  .form-label span { color: var(--rust); }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--ink-10);
+    border-radius: var(--radius-md);
+    background: #fff;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--ink);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .form-input::placeholder {
+    color: var(--ink-30);
+  }
+
+  .form-input:focus {
+    border-color: var(--rust);
+    box-shadow: 0 0 0 3px rgba(200,75,47,0.12);
+  }
+
+  .form-input:invalid:not(:placeholder-shown) {
+    border-color: var(--rust);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+  }
+
+  .form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%231A1A18' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    padding-right: 2.5rem;
+  }
+
+  .form-check {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .form-check-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.82rem;
+    color: var(--ink-60);
+    line-height: 1.55;
+  }
+
+  .form-check-input {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--ink-30);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    accent-color: var(--rust);
+    cursor: pointer;
+  }
+
+  .form-submit {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .form-footnote {
+    text-align: center;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-30);
+    margin-top: 0.25rem;
+  }
+
+  /* Success state */
+  .form-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 3rem 2rem;
+  }
+
+  .form-success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(74,82,64,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--moss);
+  }
+
+  .form-success h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--ink);
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: #111110;
+    padding-block: clamp(3rem, 6vw, 5rem) 2rem;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 240px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-wordmark {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--bone);
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+
+  .footer-tagline {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: rgba(245,240,232,0.3);
+    line-height: 1.8;
+    text-transform: uppercase;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-self: end;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col-head {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-col a {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.55);
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover { color: var(--bone); }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom .mono {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: rgba(245,240,232,0.25);
+    text-transform: uppercase;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .footer-bottom a { transition: color 0.2s ease; }
+  .footer-bottom a:hover { color: rgba(245,240,232,0.6); }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-links { justify-self: start; }
+    .why-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  @media (max-width: 640px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-links { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successMsg = document.getElementById('form-success');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('.form-submit') as HTMLButtonElement;
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    // Simulate submission (replace with actual fetch/API call)
+    setTimeout(() => {
+      if (form && successMsg) {
+        form.hidden = true;
+        successMsg.hidden = false;
+      }
+    }, 1200);
+  });
+</script>

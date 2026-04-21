@@ -1,0 +1,954 @@
+---
+const industries = [
+  {
+    id: "automotive",
+    title: "Automotive",
+    description:
+      "Engine mounts, suspension bushings, door seals, HVAC components, and underbody protection systems for OEMs and Tier 1–2 suppliers.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 01-2-2V9a2 2 0 012-2h11l4 4 3 2v4a2 2 0 01-2 2h-1"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>`,
+    clients: ["Volkswagen Group", "Stellantis Tier 1", "ZF Friedrichshafen"],
+    highlight: "IATF 16949 awareness",
+    color: "rust",
+  },
+  {
+    id: "rail",
+    title: "Rail & Transit",
+    description:
+      "Rail pad profiles, buffer elements, anti-vibration mounts, and bridge bearing compounds for high-speed and metro rail infrastructure.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M4 14h16M10 4v16M14 4v16"/></svg>`,
+    clients: ["Alstom supply chain", "DB Infrastructure", "PKP PLK"],
+    highlight: "EN 13262 compliant",
+    color: "gold",
+  },
+  {
+    id: "industrial",
+    title: "Industrial Machinery",
+    description:
+      "Hydraulic seals, conveyor belts, coupling elements, and precision gaskets for general industrial machinery and process equipment.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>`,
+    clients: ["Atlas Copco network", "SMC Corp", "Parker Hannifin"],
+    highlight: "Wide compound portfolio",
+    color: "moss",
+  },
+  {
+    id: "agriculture",
+    title: "Agriculture & Construction",
+    description:
+      "Track pads, implement seals, hydraulic hose components, and vibration dampers for heavy machinery operating in harsh field conditions.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M8 22v-4M16 22v-6"/><path d="M2 12C2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10"/><path d="M2 12h10"/></svg>`,
+    clients: ["AGCO supply chain", "CNH Industrial", "Claas Group"],
+    highlight: "Abrasion-resistant compounds",
+    color: "rust",
+  },
+  {
+    id: "energy",
+    title: "Energy & Infrastructure",
+    description:
+      "Pipeline seals, subsea gaskets, cable management compounds, and anti-vibration pads for wind, water, and conventional energy infrastructure.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+    clients: ["Vestas supply network", "Siemens Energy", "Europipe"],
+    highlight: "NORSOK M-710 materials",
+    color: "gold",
+  },
+  {
+    id: "special",
+    title: "Special Projects",
+    description:
+      "Defence, aerospace, medical device, and bespoke research projects where standard catalogue solutions simply do not exist.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    clients: ["NDA basis only", "Unique by definition"],
+    highlight: "Custom NDA-based projects",
+    color: "moss",
+  },
+];
+
+const markets = [
+  { flag: "🇩🇪", name: "Germany", key: true },
+  { flag: "🇳🇱", name: "Netherlands", key: true },
+  { flag: "🇧🇪", name: "Belgium", key: true },
+  { flag: "🇫🇷", name: "France", key: true },
+  { flag: "🇮🇹", name: "Italy", key: true },
+  { flag: "🇬🇧", name: "United Kingdom", key: true },
+  { flag: "🇺🇸", name: "United States", key: true },
+  { flag: "🇨🇿", name: "Czech Republic", key: false },
+  { flag: "🇦🇹", name: "Austria", key: false },
+  { flag: "🇸🇪", name: "Sweden", key: false },
+  { flag: "🇨🇭", name: "Switzerland", key: false },
+  { flag: "🇩🇰", name: "Denmark", key: false },
+];
+---
+
+<section id="industries" class="industries">
+  <div class="container">
+    <!-- Header -->
+    <div class="ind-header">
+      <p class="sec-index sec-index--light reveal">
+        05 — Industries & Geography
+      </p>
+      <h2 class="sec-title sec-title--light ind-title reveal reveal-delay-1">
+        Where TARAXA<br />
+        <em>operates</em>
+      </h2>
+      <p class="body-lg ind-lead reveal reveal-delay-2">
+        From automotive assembly lines in Stuttgart to wind farms off the Dutch
+        coast — our components work in demanding environments across 40+
+        countries.
+      </p>
+    </div>
+
+    <!-- Industry cards -->
+    <div class="ind-grid" data-stagger>
+      {
+        industries.map((ind, i) => (
+          <article
+            class={`ind-card reveal reveal-delay-${Math.min(i + 1, 5)} ind-card--${ind.color}`}
+          >
+            <div class="ind-card-icon" set:html={ind.icon} />
+            <div class="ind-card-body">
+              <h3 class="ind-card-title">{ind.title}</h3>
+              <p class="body-sm ind-card-desc">{ind.description}</p>
+              <div class="ind-card-highlight">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <circle
+                    cx="6"
+                    cy="6"
+                    r="5.5"
+                    stroke="currentColor"
+                    stroke-width="1"
+                  />
+                  <path
+                    d="M4 6.5l1.5 1.5L8 4.5"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                {ind.highlight}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Geography section -->
+    <div class="geo-section">
+      <div class="geo-header reveal">
+        <h3 class="heading-lg geo-title">Key markets</h3>
+        <p class="body-sm" style="color: rgba(245,240,232,0.5)">
+          Direct export and logistics partnerships across Europe and North
+          America.
+        </p>
+      </div>
+
+      <!-- World map concept — SVG path art + market pins -->
+      <div class="geo-map-wrap reveal reveal-delay-1">
+        <div class="geo-map">
+          <!-- Simplified world map -->
+          <svg
+            class="geo-map-svg"
+            viewBox="100 70 650 300"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <!-- Grid lines -->
+            <g stroke="rgba(245,240,232,0.04)" stroke-width="0.5">
+              {
+                [100, 150, 200, 250, 300, 350].map((y) => (
+                  <line x1="150" y1={y} x2="750" y2={y} />
+                ))
+              }
+              {
+                [200, 300, 400, 500, 600, 700].map((x) => (
+                  <line x1={x} y1="60" x2={x} y2="400" />
+                ))
+              }
+            </g>
+            <!-- Dot grid overlay -->
+            {
+              [0, 1, 2, 3, 4, 5, 6].map((r) =>
+                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((c) => (
+                  <circle
+                    cx={c * 50 + 175}
+                    cy={r * 50 + 75}
+                    r="0.8"
+                    fill="rgba(245,240,232,0.05)"
+                  />
+                )),
+              )
+            }
+
+            <!-- North America -->
+            <path
+              class="geo-continent geo-continent--na"
+              d="M200 130 L270 120 L300 140 L295 180 L280 200 L260 210 L240 200 L220 210 L200 200 L185 185 L190 165 L180 150 Z"
+              fill="rgba(201,168,76,0.07)"
+              stroke="rgba(201,168,76,0.18)"
+              stroke-width="0.8"></path>
+
+            <!-- Scandinavia -->
+            <path
+              class="geo-continent geo-continent--scan"
+              d="M475 105 L490 100 L500 115 L490 130 L480 125 L470 115 Z"
+              fill="rgba(201,168,76,0.08)"
+              stroke="rgba(201,168,76,0.2)"
+              stroke-width="0.8"></path>
+
+            <!-- UK & Ireland -->
+            <path
+              class="geo-continent geo-continent--uk"
+              d="M438 128 L445 124 L452 126 L458 130 L455 142 L448 148 L442 144 L438 136 Z"
+              fill="rgba(201,168,76,0.1)"
+              stroke="rgba(201,168,76,0.25)"
+              stroke-width="0.8"></path>
+
+            <!-- Europe main -->
+            <path
+              class="geo-continent geo-continent--eu"
+              d="M455 140 L470 132 L490 130 L510 138 L528 132 L545 142 L548 162 L540 178 L532 195 L518 208 L510 225 L500 238 L486 232 L475 218 L462 224 L452 214 L442 198 L448 178 L442 162 L450 152 Z"
+              fill="rgba(201,168,76,0.12)"
+              stroke="rgba(201,168,76,0.3)"
+              stroke-width="0.8"></path>
+
+            <!-- Iberian Peninsula -->
+            <path
+              class="geo-continent"
+              d="M430 190 L445 185 L452 195 L455 210 L448 220 L435 222 L428 212 L425 200 Z"
+              fill="rgba(201,168,76,0.06)"
+              stroke="rgba(201,168,76,0.15)"
+              stroke-width="0.8"></path>
+
+            <!-- Connection lines from Poland to markets -->
+            <g
+              class="geo-connections"
+              stroke="rgba(201,168,76,0.18)"
+              stroke-width="0.8"
+              stroke-dasharray="4,3"
+            >
+              <line x1="500" y1="155" x2="482" y2="154"></line>
+              <line x1="500" y1="155" x2="470" y2="148"></line>
+              <line x1="500" y1="155" x2="466" y2="154"></line>
+              <line x1="500" y1="155" x2="460" y2="168"></line>
+              <line x1="500" y1="155" x2="448" y2="138"></line>
+              <line x1="500" y1="155" x2="488" y2="180"></line>
+              <path d="M500 155 Q380 90 230 170"></path>
+            </g>
+
+            <!-- Market dots with pulse -->
+            <!-- Germany -->
+            <circle
+              class="geo-pin"
+              cx="482"
+              cy="154"
+              r="5"
+              fill="rgba(201,168,76,0.8)"></circle>
+            <circle
+              class="geo-pin-pulse"
+              cx="482"
+              cy="154"
+              r="5"
+              fill="none"
+              stroke="var(--gold)"
+              stroke-width="1"></circle>
+            <!-- Netherlands -->
+            <circle
+              class="geo-pin"
+              cx="470"
+              cy="148"
+              r="4.5"
+              fill="rgba(201,168,76,0.7)"></circle>
+            <circle
+              class="geo-pin-pulse"
+              cx="470"
+              cy="148"
+              r="4.5"
+              fill="none"
+              stroke="var(--gold)"
+              stroke-width="1"></circle>
+            <!-- Belgium -->
+            <circle
+              class="geo-pin"
+              cx="466"
+              cy="154"
+              r="4"
+              fill="rgba(201,168,76,0.7)"></circle>
+            <!-- France -->
+            <circle
+              class="geo-pin"
+              cx="460"
+              cy="168"
+              r="4.5"
+              fill="rgba(201,168,76,0.65)"></circle>
+            <!-- UK -->
+            <circle
+              class="geo-pin"
+              cx="448"
+              cy="138"
+              r="4.5"
+              fill="rgba(201,168,76,0.65)"></circle>
+            <circle
+              class="geo-pin-pulse"
+              cx="448"
+              cy="138"
+              r="4.5"
+              fill="none"
+              stroke="var(--gold)"
+              stroke-width="1"></circle>
+            <!-- Italy -->
+            <circle
+              class="geo-pin"
+              cx="488"
+              cy="180"
+              r="4"
+              fill="rgba(201,168,76,0.6)"></circle>
+            <!-- USA -->
+            <circle
+              class="geo-pin"
+              cx="230"
+              cy="170"
+              r="5.5"
+              fill="rgba(201,168,76,0.55)"></circle>
+            <circle
+              class="geo-pin-pulse"
+              cx="230"
+              cy="170"
+              r="5.5"
+              fill="none"
+              stroke="var(--gold)"
+              stroke-width="1"></circle>
+
+            <!-- Poland marker (manufacturer HQ) -->
+            <circle
+              class="geo-hq-glow"
+              cx="500"
+              cy="155"
+              r="28"
+              fill="url(#hq-glow)"></circle>
+            <circle
+              class="geo-hq-ring geo-hq-ring--outer"
+              cx="500"
+              cy="155"
+              r="22"
+              fill="none"
+              stroke="var(--rust)"
+              stroke-width="0.6"
+              opacity="0.2"></circle>
+            <circle
+              class="geo-hq-ring geo-hq-ring--mid"
+              cx="500"
+              cy="155"
+              r="16"
+              fill="none"
+              stroke="var(--rust)"
+              stroke-width="0.8"
+              opacity="0.35"></circle>
+            <circle
+              class="geo-hq-core"
+              cx="500"
+              cy="155"
+              r="8"
+              fill="var(--rust)"
+              opacity="0.95"></circle>
+            <text
+              x="514"
+              y="150"
+              font-family="JetBrains Mono, monospace"
+              font-size="10"
+              fill="rgba(245,240,232,0.75)"
+              letter-spacing="1.5"
+              font-weight="600">GUMEX</text
+            >
+            <text
+              x="514"
+              y="163"
+              font-family="JetBrains Mono, monospace"
+              font-size="7.5"
+              fill="rgba(245,240,232,0.4)"
+              letter-spacing="0.8">POLAND · HQ</text
+            >
+
+            <!-- Glow gradient -->
+            <defs>
+              <radialGradient id="hq-glow">
+                <stop offset="0%" stop-color="var(--rust)" stop-opacity="0.2"
+                ></stop>
+                <stop offset="100%" stop-color="var(--rust)" stop-opacity="0"
+                ></stop>
+              </radialGradient>
+            </defs>
+          </svg>
+
+          <!-- Map labels -->
+          <div class="geo-legend">
+            <div class="geo-legend-item">
+              <span class="geo-dot geo-dot-rust"></span>
+              <span class="mono">Manufacturing HQ</span>
+            </div>
+            <div class="geo-legend-item">
+              <span class="geo-dot geo-dot-gold"></span>
+              <span class="mono">Key markets</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Markets list -->
+        <div class="geo-markets">
+          <p
+            class="mono"
+            style="color: rgba(245,240,232,0.4); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem;"
+          >
+            Active markets
+          </p>
+          <div class="geo-markets-grid">
+            {
+              markets.map((m) => (
+                <div class={`geo-market ${m.key ? "geo-market--key" : ""}`}>
+                  <span class="geo-market-flag">{m.flag}</span>
+                  <span class="geo-market-name">{m.name}</span>
+                  {m.key && <span class="geo-market-dot" />}
+                </div>
+              ))
+            }
+          </div>
+          <p
+            class="mono"
+            style="color: rgba(245,240,232,0.3); font-size: 0.62rem; margin-top: 1rem; letter-spacing: 0.06em;"
+          >
+            + 30 additional countries on request
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .industries {
+    background: var(--ink);
+    padding-block: clamp(5rem, 10vw, 9rem);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .industries::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(245, 240, 232, 0.08),
+      transparent
+    );
+  }
+
+  /* Header */
+  .ind-header {
+    margin-bottom: 4rem;
+    max-width: 800px;
+  }
+
+  .ind-title {
+    color: var(--bone);
+    font-family: var(--font-display);
+    margin-block: 1.5rem;
+  }
+
+  .ind-title em {
+    color: var(--rust);
+    font-style: italic;
+  }
+
+  .ind-lead {
+    color: rgba(245, 240, 232, 0.55);
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    line-height: 1.7;
+  }
+
+  /* Industry grid */
+  .ind-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(245, 240, 232, 0.06);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 5rem;
+  }
+
+  /* Cards */
+  .ind-card {
+    background: rgba(26, 26, 24, 0.98);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: background 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ind-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+
+  .ind-card--rust::after {
+    background: var(--rust);
+  }
+  .ind-card--gold::after {
+    background: var(--gold);
+  }
+  .ind-card--moss::after {
+    background: var(--moss);
+  }
+
+  .ind-card:hover {
+    background: rgba(32, 32, 30, 1);
+  }
+  .ind-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .ind-card-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+  }
+
+  .ind-card--rust .ind-card-icon {
+    background: rgba(200, 75, 47, 0.12);
+    color: #e06040;
+  }
+  .ind-card--gold .ind-card-icon {
+    background: rgba(201, 168, 76, 0.12);
+    color: var(--gold);
+  }
+  .ind-card--moss .ind-card-icon {
+    background: rgba(74, 82, 64, 0.15);
+    color: #7a8c6a;
+  }
+
+  .ind-card:hover.ind-card--rust .ind-card-icon {
+    background: rgba(200, 75, 47, 0.2);
+  }
+  .ind-card:hover.ind-card--gold .ind-card-icon {
+    background: rgba(201, 168, 76, 0.2);
+  }
+  .ind-card:hover.ind-card--moss .ind-card-icon {
+    background: rgba(74, 82, 64, 0.25);
+  }
+
+  .ind-card-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .ind-card-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--bone);
+    line-height: 1.2;
+  }
+
+  .ind-card-desc {
+    color: rgba(245, 240, 232, 0.5);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .ind-card-highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: rgba(245, 240, 232, 0.3);
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(245, 240, 232, 0.06);
+  }
+
+  .ind-card--rust .ind-card-highlight svg {
+    color: var(--rust);
+  }
+  .ind-card--gold .ind-card-highlight svg {
+    color: var(--gold);
+  }
+  .ind-card--moss .ind-card-highlight svg {
+    color: #7a8c6a;
+  }
+
+  /* Geography */
+  .geo-section {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(245, 240, 232, 0.07);
+    border-radius: var(--radius-xl);
+    padding: clamp(2rem, 4vw, 3.5rem);
+    overflow: hidden;
+  }
+
+  .geo-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .geo-title {
+    font-family: var(--font-display);
+    color: var(--bone);
+    font-weight: 400;
+  }
+
+  .geo-map-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .geo-map {
+    position: relative;
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(245, 240, 232, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .geo-map-svg {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* ── Map animations ── */
+  .geo-continent {
+    opacity: 0;
+    animation: continent-in 1.2s ease forwards;
+  }
+  .geo-continent--na {
+    animation-delay: 0.2s;
+  }
+  .geo-continent--scan {
+    animation-delay: 0.4s;
+  }
+  .geo-continent--uk {
+    animation-delay: 0.5s;
+  }
+  .geo-continent--eu {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes continent-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Connection lines draw-in */
+  .geo-connections line,
+  .geo-connections path {
+    stroke-dashoffset: 200;
+    animation: line-draw 1.5s ease forwards;
+  }
+  .geo-connections line:nth-child(1) {
+    animation-delay: 0.6s;
+  }
+  .geo-connections line:nth-child(2) {
+    animation-delay: 0.7s;
+  }
+  .geo-connections line:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+  .geo-connections line:nth-child(4) {
+    animation-delay: 0.9s;
+  }
+  .geo-connections line:nth-child(5) {
+    animation-delay: 1s;
+  }
+  .geo-connections line:nth-child(6) {
+    animation-delay: 1.1s;
+  }
+  .geo-connections path {
+    animation-delay: 1.2s;
+    stroke-dashoffset: 400;
+  }
+
+  @keyframes line-draw {
+    from {
+      stroke-dashoffset: 200;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* Market pin pulse */
+  .geo-pin {
+    opacity: 0;
+    animation: pin-pop 0.5s ease forwards;
+  }
+  .geo-pin:nth-of-type(1) {
+    animation-delay: 0.8s;
+  }
+  .geo-pin:nth-of-type(2) {
+    animation-delay: 0.9s;
+  }
+  .geo-pin:nth-of-type(3) {
+    animation-delay: 1s;
+  }
+  .geo-pin:nth-of-type(4) {
+    animation-delay: 1.1s;
+  }
+  .geo-pin:nth-of-type(5) {
+    animation-delay: 1.2s;
+  }
+  .geo-pin:nth-of-type(6) {
+    animation-delay: 1.3s;
+  }
+  .geo-pin:nth-of-type(7) {
+    animation-delay: 1.4s;
+  }
+
+  @keyframes pin-pop {
+    from {
+      opacity: 0;
+      r: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .geo-pin-pulse {
+    animation: pin-ring 2.5s ease-in-out infinite;
+    opacity: 0;
+  }
+  .geo-pin-pulse:nth-of-type(1) {
+    animation-delay: 1s;
+  }
+  .geo-pin-pulse:nth-of-type(2) {
+    animation-delay: 1.4s;
+  }
+  .geo-pin-pulse:nth-of-type(3) {
+    animation-delay: 1.8s;
+  }
+  .geo-pin-pulse:nth-of-type(4) {
+    animation-delay: 2.2s;
+  }
+
+  @keyframes pin-ring {
+    0% {
+      r: inherit;
+      opacity: 0.6;
+      stroke-width: 1.5;
+    }
+    100% {
+      r: 14;
+      opacity: 0;
+      stroke-width: 0.3;
+    }
+  }
+
+  /* HQ core pulse */
+  .geo-hq-core {
+    animation: hq-pulse 2.8s ease-in-out infinite;
+  }
+
+  @keyframes hq-pulse {
+    0%,
+    100% {
+      opacity: 0.9;
+    }
+    50% {
+      opacity: 1;
+      r: 9;
+    }
+  }
+
+  /* HQ rings rotate */
+  .geo-hq-ring {
+    transform-origin: 500px 155px;
+  }
+  .geo-hq-ring--outer {
+    animation: hq-ring-spin 12s linear infinite;
+    stroke-dasharray: 6 4;
+  }
+  .geo-hq-ring--mid {
+    animation: hq-ring-spin 8s linear infinite reverse;
+    stroke-dasharray: 4 3;
+  }
+
+  @keyframes hq-ring-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* HQ glow breathe */
+  .geo-hq-glow {
+    animation: hq-glow-breathe 3.5s ease-in-out infinite;
+  }
+
+  @keyframes hq-glow-breathe {
+    0%,
+    100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .geo-legend {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .geo-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.4);
+  }
+
+  .geo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .geo-dot-rust {
+    background: var(--rust);
+  }
+  .geo-dot-gold {
+    background: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* Markets */
+  .geo-markets {
+    min-width: 200px;
+  }
+
+  .geo-markets-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .geo-market {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.04);
+  }
+
+  .geo-market-flag {
+    font-size: 1rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .geo-market-name {
+    font-size: 0.8rem;
+    color: rgba(245, 240, 232, 0.55);
+    font-family: var(--font-body);
+    flex: 1;
+  }
+
+  .geo-market--key .geo-market-name {
+    color: rgba(245, 240, 232, 0.8);
+    font-weight: 500;
+  }
+
+  .geo-market-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .ind-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .geo-map-wrap {
+      grid-template-columns: 1fr;
+    }
+    .geo-markets {
+      min-width: 0;
+    }
+    .geo-markets-grid {
+      grid-template-columns: repeat(2, 1fr);
+      display: grid;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .ind-grid {
+      grid-template-columns: 1fr;
+    }
+    .geo-markets-grid {
+      grid-template-columns: 1fr;
+    }
+    .geo-map-svg {
+      min-height: 300px;
+      transform: scale(1.35) translateX(12%);
+      transform-origin: center center;
+    }
+    .ind-card-icon {
+      width: 40px;
+      height: 40px;
+    }
+    .ind-card-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>

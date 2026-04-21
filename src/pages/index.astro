@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Hero from '../components/Hero.astro';
+import Studio from '../components/Studio.astro';
+import Capabilities from '../components/Capabilities.astro';
+import Process from '../components/Process.astro';
+import VideoBreak from '../components/VideoBreak.astro';
+import Materials from '../components/Materials.astro';
+import Industries from '../components/Industries.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Layout
+  title="TARAXA — Custom Rubber Engineering | Made in Poland, Shipped Worldwide"
+  description="TARAXA is a custom rubber engineering brand by GUMEX, a Polish manufacturer established in 1988. Compression & injection moulding, rubber-to-metal bonding, compound formulation, tooling design — shipped worldwide. EPDM, NBR, Silicone, FKM, Natural Rubber specialists."
+  image="/images/AdobeStock_1509438162.jpeg"
+>
+  <Navigation />
+  <main id="main" tabindex="-1">
+    <Hero />
+    <Studio />
+    <Capabilities />
+    <Process />
+    <VideoBreak />
+    <Materials />
+    <Industries />
+    <Contact />
+  </main>
+</Layout>
+
+<style is:global>
+  /* Page-level scroll offset for anchor links (accounts for fixed nav) */
+  :target {
+    scroll-margin-top: 80px;
+  }
+
+  /* Smooth section transitions */
+  main > * {
+    position: relative;
+  }
+
+  /* Skip to content link */
+  .skip-link {
+    position: fixed;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    background: var(--rust);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: top 0.2s ease;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+</style>

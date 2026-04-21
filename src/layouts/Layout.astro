@@ -1,0 +1,519 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = "TARAXA — Custom Rubber Engineering | Made in Poland",
+  description = "TARAXA is a custom rubber engineering brand by GUMEX, a Polish manufacturer established in 1988. Compression & injection moulding, rubber-to-metal bonding, compound formulation — shipped worldwide.",
+  image = "/images/og-image.jpeg",
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "TARAXA — Custom Rubber Engineering",
+  alternateName: "TARAXA by GUMEX",
+  description: description,
+  url: "https://taraxa.eu",
+  logo: "https://taraxa.eu/favicon.svg",
+  image: `https://taraxa.eu${image}`,
+  foundingDate: "1988",
+  parentOrganization: {
+    "@type": "Organization",
+    name: "GUMEX",
+    foundingDate: "1988",
+    addressCountry: "PL",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "PL",
+  },
+  areaServed: ["DE", "NL", "BE", "FR", "IT", "GB", "US", "EU"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Rubber Engineering Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Compression & Injection Moulding",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Rubber-to-Metal Bonding" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Compound Formulation" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Tooling & Mould Design" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Engineering Consultation" },
+      },
+    ],
+  },
+  sameAs: ["https://taraxa.eu"],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="custom rubber engineering, rubber moulding, rubber to metal bonding, EPDM, NBR, silicone rubber, compound formulation, Poland rubber manufacturer, GUMEX, industrial rubber"
+    />
+    <meta name="author" content="TARAXA by GUMEX" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`https://taraxa.eu${image}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="TARAXA" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@taraxarubber" />
+    <meta name="twitter:creator" content="@taraxarubber" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`https://taraxa.eu${image}`} />
+
+    <!-- Structured Data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#1A1A18" />
+
+    <!-- Preconnect fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Global styles -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <style is:global>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+      :root {
+        --bone: #f5f0e8;
+        --ink: #1a1a18;
+        --moss: #4a5240;
+        --rust: #c84b2f;
+        --gold: #c9a84c;
+        --light: #fdfaf5;
+        --ink-60: rgba(26, 26, 24, 0.6);
+        --ink-30: rgba(26, 26, 24, 0.3);
+        --ink-10: rgba(26, 26, 24, 0.08);
+        --bone-80: rgba(245, 240, 232, 0.8);
+        --rust-soft: rgba(200, 75, 47, 0.12);
+        --gold-soft: rgba(201, 168, 76, 0.15);
+        --moss-soft: rgba(74, 82, 64, 0.1);
+        --font-display: "Cormorant Garamond", "Palatino Linotype", Georgia, serif;
+        --font-body: "DM Sans", system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", "Courier New", monospace;
+        --section-pad: clamp(5rem, 10vw, 9rem);
+        --gutter: clamp(2rem, 7vw, 7rem);
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+        --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --radius-sm: 4px;
+        --radius-md: 10px;
+        --radius-lg: 20px;
+        --radius-xl: 32px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-size: 16px;
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-weight: 400;
+        color: var(--ink);
+        background-color: var(--bone);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      img,
+      video {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul,
+      ol {
+        list-style: none;
+      }
+      button {
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-family: inherit;
+      }
+
+      ::selection {
+        background: var(--rust);
+        color: #fff;
+      }
+      :focus-visible {
+        outline: 2px solid var(--rust);
+        outline-offset: 3px;
+        border-radius: 3px;
+      }
+
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bone);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--ink-30);
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--ink-60);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(36px);
+        transition:
+          opacity 0.8s var(--ease-out-expo),
+          transform 0.8s var(--ease-out-expo);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+      .reveal-delay-5 {
+        transition-delay: 0.5s;
+      }
+      .reveal-delay-6 {
+        transition-delay: 0.6s;
+      }
+      .reveal-fade {
+        opacity: 0;
+        transition: opacity 1s var(--ease-out-expo);
+      }
+      .reveal-fade.visible {
+        opacity: 1;
+      }
+
+      .container {
+        width: 100%;
+        padding-inline: var(--gutter);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.875rem 2rem;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+        border-radius: 100px;
+        transition: all 0.3s var(--ease-out-expo);
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .btn-primary {
+        background: var(--rust);
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(200, 75, 47, 0.3);
+      }
+      .btn-primary:hover {
+        background: #b33d23;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(200, 75, 47, 0.45);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--bone);
+        border: 1.5px solid rgba(245, 240, 232, 0.4);
+      }
+      .btn-ghost:hover {
+        background: rgba(245, 240, 232, 0.1);
+        border-color: rgba(245, 240, 232, 0.7);
+        transform: translateY(-2px);
+      }
+
+      .btn-outline-dark {
+        background: transparent;
+        color: var(--ink);
+        border: 1.5px solid var(--ink-30);
+      }
+      .btn-outline-dark:hover {
+        background: var(--ink);
+        color: var(--bone);
+        border-color: var(--ink);
+        transform: translateY(-2px);
+      }
+
+      /* ── Section heading system ── */
+
+      /* Index label: "01 — CAPABILITIES" */
+      .sec-index {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--rust);
+        margin-bottom: 1.5rem;
+      }
+      .sec-index::after {
+        content: '';
+        display: block;
+        height: 1px;
+        width: 0;
+        background: currentColor;
+        opacity: 0.4;
+        transition: width 1s var(--ease-out-expo);
+      }
+      .sec-index.visible::after { width: 60px; }
+
+      /* Dark section variant */
+      .sec-index--light {
+        color: var(--gold);
+      }
+
+      /* Main section title */
+      .sec-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+        font-weight: 300;
+        line-height: 1.0;
+        letter-spacing: -0.025em;
+        color: var(--ink);
+        margin-bottom: 0;
+      }
+      .sec-title em {
+        font-style: italic;
+        color: var(--rust);
+      }
+      .sec-title--light {
+        color: var(--bone);
+      }
+      .sec-title--light em {
+        color: var(--gold);
+      }
+
+      /* Divider rule below heading block */
+      .sec-rule {
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.08;
+        margin-block: 3rem;
+      }
+
+      /* Legacy label kept for Hero eyebrow */
+      .label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-60);
+        padding: 0.3rem 0.75rem;
+        border: 1px solid var(--ink-10);
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.5);
+      }
+      .label-rust {
+        color: var(--rust);
+        border-color: rgba(200, 75, 47, 0.25);
+        background: rgba(200, 75, 47, 0.08);
+      }
+      .label-gold {
+        color: #8a6d28;
+        border-color: rgba(201, 168, 76, 0.35);
+        background: rgba(201, 168, 76, 0.12);
+      }
+      .label-moss {
+        color: var(--moss);
+        border-color: rgba(74, 82, 64, 0.25);
+        background: rgba(74, 82, 64, 0.08);
+      }
+
+      /* Site Loader */
+      #site-loader {
+        position: fixed;
+        inset: 0;
+        background: var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition:
+          opacity 0.7s var(--ease-out-expo),
+          visibility 0.7s;
+      }
+      #site-loader.loaded {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .loader-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .loader-wordmark {
+        font-family: var(--font-display);
+        font-size: 2.5rem;
+        color: var(--bone);
+        font-weight: 300;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+      }
+      .loader-bar-wrap {
+        width: 120px;
+        height: 2px;
+        background: rgba(245, 240, 232, 0.15);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .loader-bar {
+        height: 100%;
+        background: var(--gold);
+        border-radius: 2px;
+        animation: loader-progress 1.2s var(--ease-out-expo) forwards;
+      }
+      @keyframes loader-progress {
+        from {
+          width: 0%;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      .loader-sub {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: rgba(245, 240, 232, 0.4);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Site Loader -->
+    <div id="site-loader" aria-hidden="true">
+      <div class="loader-inner">
+        <div class="loader-wordmark">TARAXA</div>
+        <div class="loader-bar-wrap">
+          <div class="loader-bar"></div>
+        </div>
+        <div class="loader-sub">Custom Rubber Engineering</div>
+      </div>
+    </div>
+
+    <slot />
+
+    <script>
+      // Dismiss loader
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          const loader = document.getElementById("site-loader");
+          if (loader) loader.classList.add("loaded");
+        }, 1000);
+      });
+
+      // Intersection Observer for reveal animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      );
+
+      document
+        .querySelectorAll(".reveal, .reveal-fade")
+        .forEach((el) => observer.observe(el));
+
+      // Smooth reveal for staggered children
+      document.querySelectorAll("[data-stagger]").forEach((parent) => {
+        const children = parent.querySelectorAll(".reveal, .reveal-fade");
+        children.forEach((child, i) => {
+          child.style.transitionDelay = `${i * 0.08}s`;
+        });
+      });
+    </script>
+  </body>
+</html>
