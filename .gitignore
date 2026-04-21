@@ -30,6 +30,3 @@ pnpm-debug.log*
 
 # Reference folder
 referencia/
-
-# Videos (too large for GitHub)
-public/videos/
